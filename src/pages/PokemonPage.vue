@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue';
 import PokemonPicture from '@/components/PokemonPicture.vue';
 import PokemonOptions from '@/components/PokemonOptions.vue';
-import getPokemonsOptions from '@/helpers/getPokemonOptions';
+import getPokemonsOptions from '@/helpers/getPokemonsOptions';
 import { Pokemon } from '@/interfaces/pokemon';
 
 export default defineComponent({
