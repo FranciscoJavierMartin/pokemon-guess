@@ -1,8 +1,27 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe("My First Test", () => {
-  it("Visits the app root url", () => {
-    cy.visit("/");
-    cy.contains("h1", "Welcome to Your Vue.js + TypeScript App");
+describe('Root test', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+
+  it('Everything is ready to start play', () => {
+    cy.contains('h1', 'Which Pokemon?').should('be.visible');
+    cy.get('img').should('be.visible').should('have.class', 'hidden-pokemon');
+    cy.get('li').should('have.length', 4);
+  });
+
+  it('Play', () => {
+    cy.get('li').first().click();
+    cy.get('h2').should('have.class', 'fade-in').should('be.visible');
+  });
+
+  it('Reset game', () => {
+    cy.get('li').first().click();
+    cy.get('h2').should('have.class', 'fade-in').should('be.visible');
+
+    cy.get('button').click();
+    cy.get('h2.fade-in').should('not.exist');
+    cy.get('img').should('be.visible').should('have.class', 'hidden-pokemon');
   });
 });
